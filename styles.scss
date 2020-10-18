@@ -16,8 +16,33 @@
   }
 }
 
-@import "./styles/nav";
-
 body {
-  background-color: grey;
+  background-color: hsl(0, 0%, 100%);
 }
+
+p {
+  color: hsl(0, 0%, 63%);
+}
+
+h1,
+h2 {
+  color: black;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+h3 {
+  color: hsl(0, 0%, 27%);
+}
+
+.content {
+  width: 100vw;
+  overflow: hidden;
+  z-index: 0;
+}
+
+@import "./styles/nav";
+@import "./styles/slider";
+@import "./styles/static";

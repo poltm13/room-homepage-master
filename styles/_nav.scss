@@ -4,9 +4,17 @@ nav {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 120px;
+  height: 110px;
   background: transparent;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  user-select: none;
+
+  h1 {
+    color: white;
+  }
 
   .navLinks {
     display: flex;
@@ -17,7 +25,17 @@ nav {
     position: absolute;
     top: 0;
     left: 0;
-    transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
+
+    .hamburger {
+      width: 20%;
+      height: 100%;
+      position: relative;
+      top: 0;
+      left: 0;
+      background: url("./images/icon-hamburger.svg") no-repeat center;
+      background-size: 18px;
+    }
 
     ul {
       display: flex;
@@ -32,17 +50,28 @@ nav {
         margin: 0 15px;
         font-size: 12px;
         font-weight: 700;
-      }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-      &::before {
-        content: "";
-        width: 20%;
-        height: 100%;
-        position: relative;
-        top: 0;
-        left: 0;
-        background: url("./images/icon-hamburger.svg") no-repeat center;
-        background-size: 18px;
+        &:hover {
+          cursor: pointer;
+
+          &::after {
+            width: 25px;
+          }
+        }
+
+        &::after {
+          content: "";
+          width: 0px;
+          height: 3px;
+          background: white;
+          position: absolute;
+          transform: translateY(15px);
+          transition: all 0.3s ease-in-out;
+        }
       }
     }
   }
@@ -51,13 +80,69 @@ nav {
     clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
     background-color: white;
 
+    .hamburger {
+      background: url("./images/icon-close.svg") no-repeat center;
+    }
+
     ul {
       li {
         opacity: 1;
       }
+    }
+  }
+}
 
-      &::before {
-        background: url("./images/icon-close.svg") no-repeat center;
+@include min-width(650px) {
+  nav {
+    width: 60%;
+    color: white;
+    padding-left: 50px;
+
+    h1 {
+      margin-right: 50px;
+    }
+
+    .navLinks {
+      clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+      background-color: transparent;
+      position: static;
+
+      .hamburger {
+        display: none;
+      }
+
+      ul {
+        li {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@include min-width(1440px) {
+  nav {
+    width: 35%;
+    color: white;
+    padding-left: 50px;
+
+    h1 {
+      margin-right: 50px;
+    }
+
+    .navLinks {
+      clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+      background-color: transparent;
+      position: static;
+
+      .hamburger {
+        display: none;
+      }
+
+      ul {
+        li {
+          opacity: 1;
+        }
       }
     }
   }
